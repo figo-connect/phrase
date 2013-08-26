@@ -15,6 +15,8 @@ class Phrase::Tool::Commands::SyncKeys < Phrase::Tool::Commands::Base
   end
 
   def execute!
+    check_gettext!
+
     print_message "Parsing local files for translation keys..."
 
     # collect files to parse
@@ -64,6 +66,15 @@ class Phrase::Tool::Commands::SyncKeys < Phrase::Tool::Commands::Base
   end
 
 private
+
+  def check_gettext!
+    begin
+      gettext_version = `xgettext -V`
+    rescue
+      print_message "No gettext found in path.".light_red
+      exit_command
+    end
+  end
 
   def choose_files_to_parse(file_names, extensions)
     files = []
