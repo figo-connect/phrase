@@ -28,6 +28,8 @@ class Phrase::Tool
         Phrase::Tool::Commands::Push.new(@options, @args)
       when /pull/
         Phrase::Tool::Commands::Pull.new(@options, @args)
+      when /sync_keys/
+        Phrase::Tool::Commands::SyncKeys.new(@options, @args)
       when /tags/
         Phrase::Tool::Commands::Tags.new(@options, @args)
       else

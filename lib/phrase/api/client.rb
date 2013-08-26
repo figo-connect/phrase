@@ -48,6 +48,13 @@ class Phrase::Api::Client
     parsed(perform_api_request("/translation_keys", :get, {:key_names => key_names}))
   end
   
+  def store_translation(key, locale)
+    raise "You must specify a key" if key.nil? or key.blank?
+    raise "You must specify a locale" if locale.nil? or locale.blank?
+
+    perform_api_request("/translations/store", :post, {"key" => key, "locale" => locale})
+  end
+
   def create_locale(name)
     raise "You must specify a name" if name.nil? or name.blank?
     

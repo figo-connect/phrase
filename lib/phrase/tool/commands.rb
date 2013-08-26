@@ -29,6 +29,12 @@ module Phrase::Tool::Commands
         target: nil,
         tag: nil
       },
+      sync_keys: {
+        push_only: false,
+        lang: "ObjectiveC",
+        extensions: "m",
+        gettext_params: nil
+      },
       tags: {
         list: true
       }
@@ -44,6 +50,7 @@ require "phrase/tool/commands/base"
 require "phrase/tool/commands/init"
 require "phrase/tool/commands/push"
 require "phrase/tool/commands/pull"
+require "phrase/tool/commands/sync_keys"
 require "phrase/tool/commands/tags"
 require "phrase/tool/commands/show_version"
 require "phrase/tool/commands/show_help"

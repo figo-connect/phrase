@@ -86,6 +86,27 @@ class OptionsFactory
   end
   private_class_method :pull
 
+  def self.sync_keys(opts, set)
+    opts.banner = "phrase sync_keys FILE|DIRECTORY"
+
+    opts.on("-p", "--push-only", "Only push new translation keys and do not delete obsolete ones") do |push_only|
+      set[:push_only] = push_only
+    end
+
+    opts.on("-l", "--language=ObjectiveC", String, "Programming language of the code to be parsed by gettext") do |lang|
+      set[:lang] = lang
+    end
+
+    opts.on("-e", "--extensions=m", String, "Extensions of the files to be parsed") do |extensions|
+      set[:extensions] = extensions
+    end
+
+    opts.on("-x", "--extra=", String, "Extra parameters/arguments to pass to gettext") do |gettext_params|
+      set[:gettext_params] = gettext_params
+    end
+  end
+  private_class_method :sync_keys
+
   def self.tags(opts, set)
     opts.banner = "phrase tags"
 
