@@ -91,6 +91,6 @@ private
 
   def parse_file(file, lang, gettext_params)
     # compile gettext arguments
-    GetPomo::PoFile.parse(`xgettext -L #{lang} --no-wrap --no-location --from-code UTF-8 #{gettext_params} -o - #{file}`).collect { |translation| translation.msgid }
+    GetPomo::PoFile.parse(`xgettext -L #{lang} --no-wrap --no-location --from-code UTF-8 #{gettext_params} -o - "#{file}"`).collect { |translation| translation.msgid }
   end
 end
